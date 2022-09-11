@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
+<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- start: HEAD -->
+<head th:replace="fragment/header :: head">
+</head>
+<!-- end: HEAD -->
+<style>
+canvas {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+</style>
+<!-- start: BODY -->
+<body>
+	<!-- start: HEADER -->
+	<div th:replace="fragment/header :: header"></div>
+	<!-- end: HEADER -->
+	<!-- start: MAIN CONTAINER -->
+	<div class="main-container">
+		<div th:replace="menu/sidemenu :: sidemenu"></div>
+		<!-- start: PAGE -->
+		<div class="main-content">
+
+			<div class="container">
+				<!-- start: PAGE HEADER -->
+				<div class="row">
+					<div class="col-sm-12">
+
+						<!-- start: PAGE TITLE & BREADCRUMB -->
+						<ol class="breadcrumb">
+							<li><i class="clip-file"></i> <a href="#">
+									Promosi-Demosi </a></li>
+						</ol>
+						<!-- end: PAGE TITLE & BREADCRUMB -->
+					</div>
+				</div>
+				<!-- end: PAGE HEADER -->
+				<p></p>
+				<!-- start: PAGE CONTENT -->
+
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<i class="fa fa-external-link-square"></i> Karyawan
+							</div>
+							<div class="panel-body">
+								<div th:replace="fragment/form-message :: form-message"></div>
+								<form role="form" class="form-horizontal" method="post"
+									th:action="@{/promosi-demosi/add}" th:object="${data}">
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Karyawan</label>
+										<div class="col-sm-7">
+											<select class="form-control" th:field="*{idkaryawan}"
+												onchange="onChangeKaryawan(this);">
+												<option value="">--- Pilih Karyawan ---</option>
+												<option th:each="karyawan: ${listkaryawan}"
+													th:value="${karyawan.id}"
+													th:text="${karyawan.nik + ' - '+karyawan.namakaryawan}"></option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">NIK</label>
+										<div class="col-sm-7">
+											<input id="nik" type="text" class="form-control"
+												readonly="readonly" th:field="*{nik}">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Nama</label>
+										<div class="col-sm-7">
+											<input id="nama" type="text" class="form-control"
+												readonly="readonly" th:field="*{namakaryawan}">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Posisi</label>
+										<div class="col-sm-7">
+											<input id="posisi" type="text" class="form-control"
+												readonly="readonly" th:field="*{namaposisifrom}">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Divisi</label>
+										<div class="col-sm-7">
+											<input id="divisi" type="text" class="form-control"
+												readonly="readonly" th:field="*{namadivisifrom}">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Tipe</label>
+										<div class="col-sm-7">
+											<select class="form-control" th:field="*{tipe}">
+												<option value="">--- Pilih Tipe ---</option>
+												<option th:each="pd: ${listpromosidemosi}"
+													th:value="${pd.name}" th:text="${pd.name}"></option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Posisi Ke</label>
+										<div class="col-sm-7">
+											<select class="form-control" th:field="*{idposisito}">
+												<option value="">--- Pilih Posisi ---</option>
+												<option th:each="pos: ${listposisi}" th:value="${pos.id}"
+													th:text="${pos.namaposisi}"></option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Divisi Ke</label>
+										<div class="col-sm-7">
+											<select class="form-control" th:field="*{iddivisito}">
+												<option value="">--- Pilih Divisi ---</option>
+												<option th:each="divi: ${listdivisi}" th:value="${divi.id}"
+													th:text="${divi.namadivisi}"></option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-sm-3"></div>
+										<div class="col-sm-7">
+											<button type="submit" class="btn btn-sm btn-primary">Save</button>
+											<a th:href="@{/promosi-demosi}"
+												class="btn btn-default btn-sm">Cancel</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- end: PAGE CONTENT-->
+				</div>
+
+
+			</div>
+
+
+			<!-- end: PAGE -->
+		</div>
+		<!-- end: MAIN CONTAINER -->
+
+	</div>
+
+	<!-- start: FOOTER -->
+	<div th:replace="fragment/footer :: footer"></div>
+	<!-- end: FOOTER -->
+	<!-- start: MAIN JAVASCRIPTS -->
+	<!--[if lt IE 9]>
+		<script src="assets/plugins/respond.min.js"></script>
+		<script src="assets/plugins/excanvas.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<![endif]-->
+	<!--[if gte IE 9]><!-->
+	<div th:replace="fragment/footer :: footer-script"></div>
+	<!-- end: MAIN JAVASCRIPTS -->
+
+	<script type="text/javascript" th:inline="javascript">
+		jQuery(document).ready(function() {
+			Main.init();
+		});
+
+		function onChangeKaryawan(evt) {
+			console.log('onChangeKaryawan : ' + evt.value);
+			var api_url = /*[[@{/rest/karyawan}]]*/'';
+			$.ajax({
+				type : 'GET',
+				url : api_url + '?idkaryawan=' + evt.value,
+				contentType : 'application/json; charset=utf-8',
+				dataType : 'json',
+				async : true,
+				success : function(result) {
+					console.log(result);
+					var objnama, objnik, objdivisi, objposisi = '';
+					if (result.success) {
+						objnama = result.listdata[0].namakaryawan;
+						objnik = result.listdata[0].nik;
+						objdivisi = result.listdata[0].namaposisi;
+						objposisi = result.listdata[0].namadivisi;
+					}
+					$("#nama").val(objnama);
+					$("#nik").val(objnik);
+					$("#posisi").val(objposisi);
+					$("#divisi").val(objdivisi);
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert(jqXHR.status + ' ' + jqXHR.responseText);
+				}
+			});
+
+		}
+	</script>
+
+
+</body>
+<!-- end: BODY -->
+
+</html>

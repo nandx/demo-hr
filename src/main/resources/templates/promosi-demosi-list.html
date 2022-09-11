@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
+<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- start: HEAD -->
+<head th:replace="fragment/header :: head">
+</head>
+<!-- end: HEAD -->
+<style>
+canvas {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+</style>
+<!-- start: BODY -->
+<body>
+	<!-- start: HEADER -->
+	<div th:replace="fragment/header :: header"></div>
+	<!-- end: HEADER -->
+	<!-- start: MAIN CONTAINER -->
+	<div class="main-container">
+		<div th:replace="menu/sidemenu :: sidemenu"></div>
+		<!-- start: PAGE -->
+		<div class="main-content">
+
+			<div class="container">
+				<!-- start: PAGE HEADER -->
+				<div class="row">
+					<div class="col-sm-12">
+
+						<!-- start: PAGE TITLE & BREADCRUMB -->
+						<ol class="breadcrumb">
+							<li><i class="clip-file"></i> <a href="#">
+									Promosi-Demosi </a></li>
+
+						</ol>
+
+						<!-- end: PAGE TITLE & BREADCRUMB -->
+					</div>
+				</div>
+				<!-- end: PAGE HEADER -->
+				<p></p>
+				<!-- start: PAGE CONTENT -->
+
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<i class="fa fa-external-link-square"></i> Promosi-Demosi
+							</div>
+							<div class="panel-body">
+								<div th:replace="fragment/form-message :: form-message"></div>
+								<div class="row">
+									<div class="col-sm-12">
+										<p>
+											<a th:href="@{/promosi-demosi/add}"
+												class="btn btn-success btn-sm">Set Promosi-Demosi</a>
+										</p>
+									</div>
+								</div>
+
+								<form role="form" class="form-horizontal" method="get">
+									<div class="form-group">
+										<label class="col-sm-3 control-label">NIK</label>
+										<div class="col-sm-7">
+											<input type="text" class="form-control" placeholder="NIK"
+												name="nik" th:value="${searchparam.nik}">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Nama</label>
+										<div class="col-sm-7">
+											<input type="text" class="form-control" placeholder="Nama"
+												name="nama" th:value="${searchparam.nama}">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Tipe</label>
+										<div class="col-sm-7">
+											<input type="text" class="form-control" placeholder="Tipe"
+												name="tipe" th:value="${searchparam.tipe}">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-sm-3"></div>
+										<div class="col-sm-7">
+											<button type="submit" class="btn btn-sm btn-primary">Search</button>
+										</div>
+									</div>
+								</form>
+
+								<div class="row">
+									<div class="col-sm-12 table-responsive">
+										<table class="table table-bordered table-hover">
+											<thead>
+												<tr>
+													<th>NIK</th>
+													<th>Nama</th>
+													<th>Tipe</th>
+													<th>Posisi Dari</th>
+													<th>Divisi Dari</th>
+													<th>Posisi Ke</th>
+													<th>Divisi Ke</th>
+													<th>Created Date</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="data: ${searchdto.listdata}">
+													<td th:text="${data.karyawan.nik}"></td>
+													<td th:text="${data.karyawan.namakaryawan}"></td>
+													<td th:text="${data.tipe}"></td>
+													<td th:text="${data.posisifrom.namaposisi}"></td>
+													<td th:text="${data.divisifrom.namadivisi}"></td>
+													<td th:text="${data.posisito.namaposisi}"></td>
+													<td th:text="${data.divisito.namadivisi}"></td>
+													<td th:text="${data.createddate}"></td>
+												</tr>
+
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-2 hidden-sm hidden-xs"></div>
+									<div
+										class="short-by-show text-center col-md-7 col-sm-8 col-xs-12">
+										<div class="form-group" style="margin: 3px 10px">
+											<nav aria-label="Page navigation">
+												<ul class="pagination" id="pagination"></ul>
+											</nav>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- end: PAGE CONTENT-->
+				</div>
+
+
+
+			</div>
+			<!-- end: PAGE -->
+		</div>
+		<!-- end: MAIN CONTAINER -->
+
+	</div>
+
+	<!-- start: FOOTER -->
+	<div th:replace="fragment/footer :: footer"></div>
+	<!-- end: FOOTER -->
+	<!-- start: MAIN JAVASCRIPTS -->
+	<!--[if lt IE 9]>
+		<script src="assets/plugins/respond.min.js"></script>
+		<script src="assets/plugins/excanvas.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<![endif]-->
+	<!--[if gte IE 9]><!-->
+	<div th:replace="fragment/footer :: footer-script"></div>
+	<!-- end: MAIN JAVASCRIPTS -->
+
+	<script type="text/javascript" th:inline="javascript">
+		jQuery(document).ready(function() {
+			Main.init();
+		});
+
+		//setting page
+		var current_page = /*[[${searchparam.page}]]*/1;
+		var total_page = /*[[${searchdto.pagedata.totalpage}]]*/1;
+		var page_size = /*[[${searchparam.size}]]*/1;
+		var p_nik = /*[[${searchparam.nik}]]*/'';
+		var p_nama = /*[[${searchparam.nama}]]*/'';
+		var p_tipe = /*[[${searchparam.tipe}]]*/ '';
+
+		setPage();
+		function setPage() {
+			window.pagObj = $('#pagination').twbsPagination({
+				totalPages : total_page,
+				visiblePages : 5,
+				startPage : parseInt(current_page)
+			}).on(
+					'page',
+					function(event, page) {
+						var search_url = /*[[@{/promosi-demosi?}]]*/'';
+						window.location.replace(search_url + 'nik=' + p_nik
+								+ '&nama=' + p_nama + '&page=' + page
+								+ '&size=' + page_size);
+					});
+		}
+	</script>
+
+
+</body>
+<!-- end: BODY -->
+
+</html>

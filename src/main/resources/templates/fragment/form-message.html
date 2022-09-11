@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="form-message">
+	<div class="col-md-12" th:if="${formdto != null && !formdto.success && formdto.errorMessage != null}">
+		<div class="errorHandler alert alert-danger">
+			<span th:text="${formdto.errorMessage.message}">You have some
+				form errors. Please check below</span>
+		</div>
+	</div>
+
+	<div class="col-md-12" th:if="${formdto != null && formdto.success && formdto.successMessage != null}">
+		<div class="errorHandler alert alert-success" th:text="${formdto.successMessage.message}">
+			<span>Data saved successfully.</span>
+		</div>
+	</div>
+</div>
+
+</html>

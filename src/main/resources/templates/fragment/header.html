@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header" class="navbar navbar-inverse navbar-fixed-top">
+	<!-- start: TOP NAVIGATION CONTAINER -->
+	<div class="container">
+		<div class="navbar-header">
+			<!-- start: RESPONSIVE MENU TOGGLER -->
+			<button data-target=".navbar-collapse" data-toggle="collapse"
+				class="navbar-toggle" type="button">
+				<span class="clip-list-2"></span>
+			</button>
+			<!-- end: RESPONSIVE MENU TOGGLER -->
+			<!-- start: LOGO -->
+			<a class="navbar-brand" href="#"> <img
+				th:src="@{/assets/images/logo-ati.png}" height="30px"> &nbsp;
+				Promosi-Demosi
+			</a>
+			<!-- end: LOGO -->
+		</div>
+		<div class="navbar-tools">
+			<!-- start: TOP NAVIGATION MENU -->
+			<ul class="nav navbar-right">
+
+
+
+				<li class="dropdown"><a data-toggle="dropdown"
+					data-hover="dropdown" class="dropdown-toggle"
+					data-close-others="true" href="#"> <span>Admin</span>
+				</a></li>
+				<!-- start: USER DROPDOWN -->
+				<li class="dropdown current-user"><a data-toggle="dropdown"
+					data-hover="dropdown" class="dropdown-toggle"
+					data-close-others="true" href="#"> <img
+						th:src="@{/assets/images/avatar-1-small.jpg}" class="circle-img"
+						alt=""> <i class="clip-chevron-down"></i>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a th:href="@{/profile}"> <i class="clip-settings"></i>
+								&nbsp;My Profile
+						</a></li>
+						<li class="divider"></li>
+						<li><a th:href="@{/logout}"> <i class="clip-exit"></i>
+								&nbsp;Log Out
+						</a></li>
+					</ul></li>
+				<!-- end: USER DROPDOWN -->
+			</ul>
+			<!-- end: TOP NAVIGATION MENU -->
+		</div>
+	</div>
+	<!-- end: TOP NAVIGATION CONTAINER -->
+</div>
+
+
+<head th:fragment="head">
+<title>ATI Business Group - HRIS</title>
+<!-- start: META -->
+<meta charset="utf-8" />
+<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="" name="description" />
+<meta content="Widyananda Dhanny" name="author" />
+<!-- end: META -->
+<!-- start: MAIN CSS -->
+<link rel="stylesheet"
+	th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet"
+	th:href="@{/assets/plugins/font-awesome/css/font-awesome.min.css}">
+<link rel="stylesheet" th:href="@{/assets/fonts/style.css}">
+<link rel="stylesheet" th:href="@{/assets/css/main.css}">
+<link rel="stylesheet" th:href="@{/assets/css/main-responsive.css}">
+<link rel="stylesheet" th:href="@{/assets/plugins/iCheck/skins/all.css}">
+<link rel="stylesheet"
+	th:href="@{/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css}">
+<link rel="stylesheet"
+	th:href="@{/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css}">
+<link rel="stylesheet" th:href="@{/assets/css/theme_light.css}"
+	type="text/css" id="skin_color">
+<link rel="stylesheet" th:href="@{/assets/css/print.css}"
+	type="text/css" media="print" />
+<!--[if IE 7]>
+		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+		<![endif]-->
+<!-- end: MAIN CSS -->
+<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+<link
+	th:href="@{/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.css}"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	th:href="@{/assets/plugins/dynatree/src/skin-vista/ui.dynatree.css}">
+
+<link rel="stylesheet"
+	th:href="@{/assets/plugins/colorbox/example2/colorbox.css}">
+<link rel="stylesheet"
+	th:href="@{/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css}">
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/assets/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/assets/plugins/bootstrap-modal/css/bootstrap-modal.css}" />
+
+<script th:src="@{/assets/plugins/chartjs/Chart.min.js}"
+	src="../dist/Chart.min.js"></script>
+<script th:src="@{/assets/plugins/chartjs/utils.js}" src="utils.js"></script>
+<link rel="stylesheet"
+	th:href="@{/assets/plugins/css3-animation/animations.css}">
+
+
+<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+<style type="text/css">
+#chart-container {
+	font-family: Arial;
+	height: 420px;
+	border: 2px dashed #aaa;
+	border-radius: 5px;
+	overflow: auto;
+	text-align: center;
+}
+
+#github-link {
+	position: fixed;
+	right: 10px;
+	font-size: 3em;
+}
+</style>
+</head>
+
+</html>

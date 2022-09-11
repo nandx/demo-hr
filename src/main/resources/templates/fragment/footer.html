@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="footer">
+	<div class="footer clearfix">
+		<div class="footer-inner">
+			Build version : <span th:text="${buildTimestamp}">buildTimestamp</span>
+		</div>
+
+		<div class="footer-items">
+			<span class="go-top"><i class="clip-chevron-up"></i></span>
+		</div>
+	</div>
+</div>
+
+<div th:fragment="footer-script">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+	<!--<![endif]-->
+	<script
+		th:src="@{/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js}"></script>
+	<script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+	<script
+		th:src="@{/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js}"></script>
+	<script th:src="@{/assets/plugins/blockUI/jquery.blockUI.js}"></script>
+	<script th:src="@{/assets/plugins/iCheck/jquery.icheck.min.js}"></script>
+	<script
+		th:src="@{/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js}"></script>
+	<script
+		th:src="@{/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js}"></script>
+	<script th:src="@{/assets/plugins/less/less-1.5.0.min.js}"></script>
+	<script th:src="@{/assets/plugins/jquery-cookie/jquery.cookie.js}"></script>
+	<script
+		th:src="@{/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js}"></script>
+	<script th:src="@{/assets/js/main.js}"></script>
+	<script th:src="@{/assets/plugins/colorbox/jquery.colorbox-min.js}"></script>
+	<script th:src="@{/assets/js/pages-gallery.js}"></script>
+	<script th:src="@{/assets/js/jquery.twbsPagination.js}"></script>
+	<script
+		th:src="@{/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js}"></script>
+
+	<script
+		th:src="@{/assets/plugins/bootstrap-modal/js/bootstrap-modal.js}"></script>
+	<script
+		th:src="@{/assets/plugins/bootstrap-modal/js/bootstrap-modalmanager.js}"></script>
+	<script th:src="@{/assets/js/ui-modals.js}"></script>
+
+	<script type="text/javascript" th:inline="javascript">
+		var openActiveMenu = function(menuid) {
+			var id = '#'+menuid;
+			jQuery(id).addClass('active open');
+		}
+	</script>
+
+</div>
+
+
+</html>
